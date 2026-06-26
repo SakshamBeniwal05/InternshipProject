@@ -5,6 +5,7 @@ This document outlines the REST API endpoints available in the Document Analysis
 ---
 
 ## Base URL
+
 ```text
 http://localhost:3000/api
 ```
@@ -14,13 +15,16 @@ http://localhost:3000/api
 ## Endpoints
 
 ### 1. Create a Quote Request
+
 Creates a new quote request in the database.
 
 *   **URL**: `/quotes` (Also accepts `/quotes/create` in Postman)
 *   **Method**: `POST`
 *   **Body Type**: `JSON` (or `form-data`)
 *   **Request Body**:
-    ```json
+    
+
+```json
     {
       "customer": "Ramesh",
       "project": "Oneplus",
@@ -28,8 +32,11 @@ Creates a new quote request in the database.
       "estimatedValue": 50000
     }
     ```
+
 *   **Success Response (201 Created)**:
-    ```json
+    
+
+```json
     {
       "success": true,
       "statusCode": 201,
@@ -47,15 +54,23 @@ Creates a new quote request in the database.
     }
     ```
 
+* **Screenshot Referance**
+    
+
+![Update Status Success](api/screenshots/Screenshot%202026-06-26%20230823.png)
+
 ---
 
 ### 2. Get All Quotes
+
 Retrieves a list of all quotes along with their linked analysis results.
 
 *   **URL**: `/quotes`
 *   **Method**: `GET`
 *   **Success Response (200 OK)**:
-    ```json
+    
+
+```json
     {
       "success": true,
       "statusCode": 200,
@@ -69,24 +84,49 @@ Retrieves a list of all quotes along with their linked analysis results.
             "estimated_value": 50000,
             "created_date": "2026-06-26T23:07:05.000Z",
             "analysis": null
-          }
+          },
+          {
+            "id": 2,
+            "customer": "Graham",
+            "project": "Happier",
+            "status": "inreview",
+            "estimated_value": 500,
+            "created_date": "2026-06-26T15:27:46.072Z",
+            "analysis": {
+                "id": "b1b91415-1a4f-400b-98c5-0558a8ffbaa5",
+                "quote_id": 2,
+                "risk": "Medium",
+                "confidence": 50,
+                "missing_items": [
+                    "Structural drawings",
+                    "Load requirements"
+                ],
+                "analyzed_at": "2026-06-26T17:38:04.896Z"
+              }
+            }
         ]
       },
       "message": "succesful api"
     }
     ```
+
 *   **Screenshot Reference**:
-    ![Get All Quotes](api/screenshots/Screenshot%202026-06-26%20230705.png)
+   
+
+![Get All Quotes](api/screenshots/Screenshot%202026-06-26%20230748.png)
 
 ---
 
 ### 3. Get Quote Details (Search by ID)
+
 Retrieves detailed information for a single quote, including its FastAPI document analysis report.
 
 *   **URL**: `/quotes/:id`
 *   **Method**: `GET`
 *   **Success Response (200 OK)**:
-    ```json
+    
+
+```json
     {
       "success": true,
       "statusCode": 200,
@@ -114,18 +154,24 @@ Retrieves detailed information for a single quote, including its FastAPI documen
       "message": "succesful api"
     }
     ```
+
 *   **Screenshot Reference**:
-    ![Get Quote by ID](api/screenshots/Screenshot%202026-06-26%20230718.png)
+    
+
+![Get Quote by ID](api/screenshots/Screenshot%202026-06-26%20230718.png)
 
 ---
 
 ### 4. Analyze Quote Documents (FastAPI Integration)
+
 Triggers document analysis via the FastAPI service, stores the results locally, and returns the combined analysis and quote status.
 
 *   **URL**: `/quotes/:id/analyze`
 *   **Method**: `POST`
 *   **Success Response (200 OK)**:
-    ```json
+    
+
+```json
     {
       "success": true,
       "statusCode": 200,
@@ -153,25 +199,35 @@ Triggers document analysis via the FastAPI service, stores the results locally, 
       "message": "Quote analysis completed successfully"
     }
     ```
+
 *   **Screenshot Reference**:
-    ![Analyze Quote](api/screenshots/Screenshot%202026-06-26%20230748.png)
+  
+
+![Analyze Quote](api/screenshots/Screenshot%202026-06-26%20230810.png)
 
 ---
 
 ### 5. Update Quote Status
+
 Updates the progress state of an existing quote. The status is validated against allowed values.
 
 *   **URL**: `/quotes/:id/status`
 *   **Method**: `PATCH`
 *   **Request Body**:
-    ```json
+    
+
+```json
     {
       "status": "In Review"
     }
     ```
-    *(Allowed values: `"New"`, `"In Review"`, `"Needs Info"`, `"Completed"`)*
+
+    *(Allowed values: `"New"` , `"In Review"` , `"Needs Info"` , `"Completed"` )*
+
 *   **Success Response (200 OK)**:
-    ```json
+    
+
+```json
     {
       "success": true,
       "statusCode": 200,
@@ -188,6 +244,8 @@ Updates the progress state of an existing quote. The status is validated against
       "message": "Quote status updated successfully"
     }
     ```
+
 *   **Screenshot References**:
-    *   ![Update Status](api/screenshots/Screenshot%202026-06-26%20230810.png)
-    *   ![Update Status Success](api/screenshots/Screenshot%202026-06-26%20230823.png)
+    
+
+![Update Status](api/screenshots/Screenshot%202026-06-26%20230705.png)
