@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum RiskLevel {
+  Low
+  Medium
+  High
+}
+
+model QuoteRequest {
+  id              Int             @id @default(autoincrement())
+  customer        String
+  project         String
+  status          String
+  estimated_value Float           @map("estimated_value")
+  created_date    DateTime        @default(now()) @map("created_date")
+  analysis        AnalysisResult? // ← back-relation required by Prisma
+}
+
+model AnalysisResult {
+  id            String    @id @default(uuid())
+  quote_id      Int       @unique  @map("quote_id")
+  risk          RiskLevel
+  confidence    Int
+  missing_items String[]  @map("missing_items")
+  analyzed_at   DateTime  @default(now()) @map("analyzed_at")
+
+  quote QuoteRequest @relation(fields: [quote_id], references: [id], onDelete: Cascade)
+
+  @@map("analysis_results")
+}
