@@ -7,6 +7,7 @@ A Backend project created with node and express to run server and PrismaPostgres
 ## Suggested Project Structure
 
 ```
+api/           #API acreenshots and Postman API JSON   
 controllers/   # Route controllers (request handling & response wrappers)
 routes/        # Express router path definitions
 services/      # Business logic & external API integrations (FastAPI client)
