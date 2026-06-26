@@ -1,0 +1,184 @@
+{
+  "info": {
+    "_postman_id": "27b548c0-aedc-4e46-bd68-dc810843fa7d",
+    "name": "API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48187133",
+    "_collection_link": "https://go.postman.co/collection/48187133-27b548c0-aedc-4e46-bd68-dc810843fa7d?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Creatre",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "customer ",
+              "value": "Ramesh",
+              "type": "text",
+              "uuid": "b944b8aa-e463-4934-87cb-bd39e9c5bd50"
+            },
+            {
+              "key": "project",
+              "value": "Onelus",
+              "type": "text",
+              "uuid": "9c61b3ee-de2d-4b84-b839-fb0e89cfa3f2"
+            },
+            {
+              "key": "status",
+              "value": "on going ",
+              "type": "text",
+              "uuid": "fc1d697b-cbda-4be4-a0c5-fa6cedfdd4c6"
+            },
+            {
+              "key": "estimatedValue",
+              "value": "50000",
+              "type": "text",
+              "uuid": "b16fa81c-8b38-4621-8d58-202137223a9c"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/quotes/create",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "quotes",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Analysis",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "customer ",
+              "value": "Ramesh",
+              "type": "text",
+              "uuid": "b944b8aa-e463-4934-87cb-bd39e9c5bd50"
+            },
+            {
+              "key": "project",
+              "value": "Onelus",
+              "type": "text",
+              "uuid": "9c61b3ee-de2d-4b84-b839-fb0e89cfa3f2"
+            },
+            {
+              "key": "status",
+              "value": "on going ",
+              "type": "text",
+              "uuid": "fc1d697b-cbda-4be4-a0c5-fa6cedfdd4c6"
+            },
+            {
+              "key": "estimatedValue",
+              "value": "50000",
+              "type": "text",
+              "uuid": "b16fa81c-8b38-4621-8d58-202137223a9c"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/quotes/1/analyze",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "quotes",
+            "1",
+            "analyze"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "All Quotes",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/quotes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "quotes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Search as per ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/quotes/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "quotes",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update status",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"inreview\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/quotes/2/status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "quotes",
+            "2",
+            "status"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
